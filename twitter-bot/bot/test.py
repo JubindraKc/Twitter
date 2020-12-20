@@ -12,18 +12,21 @@ class Bot:
     def __init__(self,
                  documents,
                  twitter_api,
+                 
+                 tweet,
                  max_document_length=1000,
                  burn_in=250,
-                 tweets_per_hour=4):
+                ):
         self._documents = documents
         self._twitter_api = twitter_api
         self._corpus = {}
         self._logger = logging.getLogger(__name__)
         self._max_sentence_length = max_document_length
         self._burn_in = burn_in
+        print(tweet)
 
         # Calculate sleep timer
-        self.sleep_timer = int(60*60/tweets_per_hour)
+        self.sleep_timer = int(60*60/int(tweet))
 
     def _line_to_array(self, line):
         if len(line) < 1:
@@ -179,13 +182,13 @@ class Twitter_Api():
         self._authorization = None
 
 
-def main():
+def main(tweetshr):
     # Configure Logger
     logger = logging.getLogger()
     handler = logging.StreamHandler()
     logger.addHandler(handler)
     logger.setLevel(logging.DEBUG)
-
+    tweet= tweetshr
     consumer_key = 'vw6TDsaj14kYFFSZ7xu04SHZU'
     consumer_secret = 'leLHwRvBcJaI0II1O45bfdv25J5UJeRiMseidZ6zQRm02Lhf3j'
     access_key = '1270365850655051778-ytIWe10xJduoNMvvCO9330gviwkvhI'
@@ -194,7 +197,7 @@ def main():
 
     twitter_api = Twitter_Api(
         consumer_key, consumer_secret, access_key, access_secret)
-    bot = Bot(documents, twitter_api)
+    bot = Bot(documents, twitter_api,tweet)
 
     bot.run()
 

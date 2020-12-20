@@ -25,10 +25,10 @@ def bota(request):
 
     if 'tweets' in request.POST:
 
-        tweetshr = request.POST.get("TweetHours", None)
+        tweetshr = int(request.POST.get("TweetHours", None))
 
         # print(tweetshr)
-        # main(tweetshr)
+        main(tweetshr)
         # text2csva(screenname)
         return render(request, 'bota.html')
         
@@ -56,33 +56,32 @@ def bota(request):
     return render(request, 'bota.html')
 
 
-def botb(request):
+# def botb(request):
 
-    # run = test()
+#     # run = test()
+
+#     if 'stop' in request.POST:
+#         run = ""
+
+#         return render(request, 'botb.html')
+#     return render(request, 'botb.html')
+
+
+
+
+def botb(request):
+   
+    if 'generate' in request.POST:
+     
+        hashtag = request.POST.get("Number", None)
+     
+        reply = request.POST.get("reply", None)
+        test(hashtag,reply)
+
+        return render(request, 'botb.html')
 
     if 'stop' in request.POST:
         run = ""
 
         return render(request, 'botb.html')
     return render(request, 'botb.html')
-
-
-def botc(request):
-    if 'generate' in request.POST:
-        screenname = request.POST.get("Number", None)
-        hashtag = request.POST.get("hashtag", None)
-        reply = request.POST.get("reply", None)
-        print(hashtag)
-
-        print(screenname)
-        # text2csvd(screenname)
-        screenname = int(screenname)
-        run = searchbot(screenname, hashtag, reply)
-
-        return render(request, 'botc.html')
-
-    if 'stop' in request.POST:
-        run = ""
-
-        return render(request, 'botc.html')
-    return render(request, 'botc.html')

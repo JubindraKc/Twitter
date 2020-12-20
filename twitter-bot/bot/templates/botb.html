@@ -90,10 +90,12 @@ input[type=text]:focus {
       {% csrf_token %}
 
 
-      <!-- <input type="text" name="Number" placeholder="TweetNumber"> -->
-      <input type="text" name="hashtag" placeholder="Number of Retweets">
+    
+      <input type="text" name="Number" placeholder="Number of Retweets">
+      {% comment %} <input type="submit" name="retweet" value="No of Retweet" class="button-bot" style="height: 60px;"> {% endcomment %}
       <input type="text" name="reply" placeholder="Hastag">
-     <span> <input type ="checkbox" name="autolike">Autolike Tweet? </span>
+      {% comment %} <input type="submit" name="hashtag" value="Add Hash Tag" class="button-bot" style="height: 60px;">
+      {% endcomment %}
   <br><br><br>
 <input type="submit" name="generate" value="Retweet Now" class="button-bot" style="height: 60px;">
 <input type="submit" name="stop" value="Stop" class="button-bot" style="height: 60px;">

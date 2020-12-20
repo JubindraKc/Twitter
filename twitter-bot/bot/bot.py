@@ -37,14 +37,19 @@ def store_last_seen(FILE_NAME, last_seen_id):
     return
 
 
-def test():
+def test(hashtag,reply):
+    
+    hashtags=str(hashtag)
+    
+    replies=str(reply)
+   
     tweets = api.mentions_timeline(
         read_last_seen(), tweet_mode='extended')    # monitors mentions
     for tweet in reversed(tweets):
         if follow_tag in tweet.full_text.lower():
             print("Replied to ID -" + str(tweet.id))
             api.update_status("@" + tweet.user.screen_name + " " +
-                              " " + reply_this + " " + "#" + follow_tag, tweet.id)
+                              " " + replies + " " + "#" + hashtags, tweet.id)
             api.create_favorite(tweet.id)
             api.retweet(tweet.id)
             api.create_friendship(tweet.user.screen_name)
