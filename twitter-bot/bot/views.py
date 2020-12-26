@@ -73,10 +73,12 @@ def botb(request):
    
     if 'generate' in request.POST:
      
-        hashtag = request.POST.get("Number", None)
+        number= request.POST.get("Number", None)
+        tag=request.POST.get("Tag",None)
+        
      
         reply = request.POST.get("reply", None)
-        test(hashtag,reply)
+        searchbot(int(number),reply,tag)
 
         return render(request, 'botb.html')
 

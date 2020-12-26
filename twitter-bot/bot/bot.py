@@ -2,10 +2,10 @@ import tweepy
 import random
 import time
 
-consumer_key = 'CVXC06C2da7ZRkaJ8tSi79rWC'
-consumer_secret = 'hMb5OEIyfBnW6xpEdBRuYA4nUGuWqyz6tTlPzzLnoprEwsSMIh'
-key = '1264137430937952258-18uNbrh6lHqWd9hngQ2tgWdYXoZKGP'
-secret = 'hlAHiSqXMrcezd8s2LyugKgV0ntJ1ONvf0Ej7gpGMsHIK'
+consumer_key = 'U5ZmE14nlYLLQWAKKVTfRhQ08'
+consumer_secret = 'ZutqNtcj3Q8eHFxlApDmnZWicFNdSYcxlrU55jtEnReOC80Fhj'
+key = '1264137430937952258-cPObmxCajvlYgmtrLNVny2hMBHMnqT'
+secret = 'IAfmf9wJhFBBMRfTQMHzqdSbhedbBMocE7NGe7vbslXAX'
 
 auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
 auth.set_access_token(key, secret)
@@ -40,8 +40,10 @@ def store_last_seen(FILE_NAME, last_seen_id):
 def test(hashtag,reply):
     
     hashtags=str(hashtag)
+    print(hashtag)
     
     replies=str(reply)
+    print(reply)
    
     tweets = api.mentions_timeline(
         read_last_seen(), tweet_mode='extended')    # monitors mentions
@@ -49,7 +51,7 @@ def test(hashtag,reply):
         if follow_tag in tweet.full_text.lower():
             print("Replied to ID -" + str(tweet.id))
             api.update_status("@" + tweet.user.screen_name + " " +
-                              " " + replies + " " + "#" + hashtags, tweet.id)
+                              " " + replies + " " + "#" + follow_tag, tweet.id)
             api.create_favorite(tweet.id)
             api.retweet(tweet.id)
             api.create_friendship(tweet.user.screen_name)

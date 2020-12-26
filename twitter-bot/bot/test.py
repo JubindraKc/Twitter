@@ -189,6 +189,7 @@ def main(tweetshr):
     logger.addHandler(handler)
     logger.setLevel(logging.DEBUG)
     tweet= tweetshr
+    print(tweet)
     consumer_key = 'vw6TDsaj14kYFFSZ7xu04SHZU'
     consumer_secret = 'leLHwRvBcJaI0II1O45bfdv25J5UJeRiMseidZ6zQRm02Lhf3j'
     access_key = '1270365850655051778-ytIWe10xJduoNMvvCO9330gviwkvhI'

@@ -83,14 +83,7 @@ body {
 
 
 
-      <select id="cars" name="TweetHours">
-        <option value="5 ">5</option>
-        <option value="10">10</option>
-        <option value="15">15</option>
-        <!-- <option value="20">20</option> -->
-      </select>
-      <input type="submit" name="tweets" value="Add" class="button-bot" style="width:80px;">
-
+    
 <input type="text" name="KeyWordA" placeholder="max. 1000 words">
 <input type="submit" name="corpusa" value="Add" class="button-bot" style="width:80px;">
 
@@ -102,9 +95,19 @@ body {
 
 <input type="text" name="KeyWordC" placeholder="max. 1000 words">
 <input type="submit" name="corpusc" value="Add" class="button-bot" style="width:80px;">
+ <select id="cars" name="TweetHours" style="padding:1rem">
+        <option value="5 ">5</option>
+        <option value="10">10</option>
+        <option value="15">15</option>
+        <!-- <option value="20">20</option> -->
+      </select>
 <div>
-  <br><br><br>
-<input type="submit" name="generate" value="Generate New Tweet!" class="button-bot"style="height:60px;">
+ 
+       <br><br><br>
+      <input type="submit" name="tweets" value="Generate New Tweet!" class="button-bot" style="height:60px;">
+{% comment %} 
+ 
+<input type="submit" name="generate" value="Generate New Tweet!" class="button-bot"style="height:60px;"> {% endcomment %}
 <input type="submit" name="stop" value="Stop" class="button-bot"style="height:60px;">
 
 

@@ -2,10 +2,10 @@ import tweepy
 import time
 import random
 
-consumer_key = 'CVXC06C2da7ZRkaJ8tSi79rWC'
-consumer_secret = 'hMb5OEIyfBnW6xpEdBRuYA4nUGuWqyz6tTlPzzLnoprEwsSMIh'
-key = '1264137430937952258-18uNbrh6lHqWd9hngQ2tgWdYXoZKGP'
-secret = 'hlAHiSqXMrcezd8s2LyugKgV0ntJ1ONvf0Ej7gpGMsHIK'
+consumer_key = 'U5ZmE14nlYLLQWAKKVTfRhQ08'
+consumer_secret = 'ZutqNtcj3Q8eHFxlApDmnZWicFNdSYcxlrU55jtEnReOC80Fhj'
+key = '1264137430937952258-cPObmxCajvlYgmtrLNVny2hMBHMnqT'
+secret = 'IAfmf9wJhFBBMRfTQMHzqdSbhedbBMocE7NGe7vbslXAX'
 
 auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
 auth.set_access_token(key, secret)
@@ -23,9 +23,12 @@ add_tag = '#BudgetKingXiaomi #XiaomiForever'
 
 
 
-def searchbot(filename,tag,reply):
+def searchbot(number,reply,tag):
+    print(number)
+    print(tag)
+    print(reply)
 
-    tweets = tweepy.Cursor(api.search, tag).items(filename)
+    tweets = tweepy.Cursor(api.search, str(tag)).items(number)
    
     
     for tweet in tweets:
@@ -34,12 +37,12 @@ def searchbot(filename,tag,reply):
             api.create_favorite(tweet.id)
             print(reply)
 
-            api.update_status("@" + tweet.user.screen_name + " " + reply_this+ " " + add_tag, tweet.id)
+            api.update_status("@" + tweet.user.screen_name + " " + reply+ " " +add_tag, tweet.id)
             print('Retweeted!')
-            time.sleep(3600)
+            time.sleep(number)
         except tweepy.TweepError as e:
             print(e.reason)
-            time.sleep(3600)
+            time.sleep(number)
 
 
 # searchbot(filename)
